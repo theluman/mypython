@@ -1,0 +1,15 @@
+def functiom[()|(arguements)]:
+    suite
+
+def functiom[()|(arguements)]:
+    suite
+    returm value
+
+每个python函数都可以有一个返回值，默认为NONE,也可以使用“return value” 明确定义返回值
+
+callable(name) 用来测试是否可调用
+
+def语句会创建一个函数对象，并同时创建一个指向函数的对象引用
+  函数也是对象，可以存储在组合数据类型中，也可以作为参数传递给其他函数
+  callable() 测试
+

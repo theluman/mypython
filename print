@@ -1,0 +1,33 @@
+print 结尾会有换行符，不需要的话，在末尾加上,
+print "String %format1 %format2..." %(variable1,variable2,...)
+
+format
+  d,i 十进制整数或长整数
+  u   无符号整数或长整数
+  o   八进制整数或长整数
+  x   十六进制整数或长整数
+  X   十六进制整数（大写字母）
+  f   浮点数，如[-]m.ddddd
+  e   浮点数，如[-]m.dddddde+-xx
+  E   浮点数。如[-]m.ddddddE+-xx
+  g,G 指数小于-4或更高精度时使用%e或%E,否则使用%f
+  s   字符串或任意对象，格式化后使用str（）转变成字符串
+  r   同repr()生成的字符串
+  c   单个字符
+  %   字面意义量%
+
+%后面可以使用的修饰符（如果有，则只能按如下顺序）
+%[(name)][flags][width][.precision]typecode
+
+(name) 字典
+  d1 = {'a':20,'b':30}
+  print "the d1 num is %(a)f" %d1
+flags 对齐
+  - 表示左对齐，默认为右对齐
+  + 表示包含数字符号，正数也会带“+”
+  0 表示指定宽度外用0填充
+width
+  一个指定最小宽度的数字
+.precision
+  一个小数点，后接数字，用于指定小数点后面的位数
+
