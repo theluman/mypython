@@ -1,0 +1,63 @@
+条件测试
+
+python中所有对象都支持比较操作
+ 可用于测试相等性，相对大小等
+ 如果是复合对象，python会检查其所有部分，包括自动遍历各级嵌套对象，知道可以得出最终结果
+
+==，<,> ...
+is
+in
+
+python中不同类型的比较
+ 数字：通过相对大小进行比较
+ 字符串：按照字典次序逐字符进行比较
+ 列表和元组：自左至右比较各部分内容
+ 字典：对排序之后的（键，值）列表进行比较
+python中真假
+  1、任何非0数字和非空对象都为真
+  2、数字0、空对象和None均为假
+  3、比较和相等测试会递归的应用于数据结构中
+  4、返回值为Ture或False
+组合条件测试
+  x and y  与运算
+  x or y   或运算
+  not x    非运算
+
+if
+if boolean_expression1:
+   suite1
+elif expression2:
+   suit2
+else:
+   else_suite
+
+elif语句是可选的，
+仅用于占位，而后在填充相关语句时，可以使用pass
+
+x if y else z
+expression1 if boolean_expression else expression2
+
+while
+  用于编写通用迭代结构
+  顶端测试为真即会执行循环体，并会重复多次测试直到为假后执行循环后的其他语句
+for循环
+  一个通用的序列迭代器，用于遍历任何有序的序列对象内的元素
+  可用于字符串，元组，列表，和其他的位置可迭代对象，以及通过类所创建的新对象
+python 也提供了一些能够进行隐形迭代的工具
+  in 成员关系测试
+  列表解析
+  map、reduce和filter函数
+
+while
+  while boolean_expression:
+    while_suite
+  else:
+    else_suite
+
+else分之为可选部分
+只要boolean_expression结果为true,循环就会执行，boolean_expression的结果为False时会终止循环，此时如果有else语句，则会执行一次else语句
+
+break 跳出最内层的循环
+continue 跳到所处的最近层的循环的开始处
+pass 占位语句
+else代码块  循环正常终止才会执行，如果是循环终止是由break跳出导致的，则else不会执行

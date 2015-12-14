@@ -188,9 +188,19 @@ d.values() 返回值列表
 d.pop(x) 弹出键为x的元素
 d.popitem() 随机弹出键值映射
 d1.update(d2) 将一个字段合并到当前字典,如果有键重复，d2d对应键的值会覆盖d1
-d.viewitems()
-	   i1 = d1.iteritems:返回一个迭代器对象
-           i1.next() 用来实现遍历
+d.viewitems() 返回所有项
+d.viewkeys() 返回键
+d.viewvalues() 返回值
+ dict_values(['m',42,'jerry'])
+
+i1 = d1.iteritems:返回一个迭代器对象
+i1.next() 用来实现遍历
+
+zip('xyz','123') 序列组成序列
+  [('x,1'),('y',2),('z',3)]
+dict(zip('xyz','123'))  快速构建字典的方式，好用的方式
+
+
 语句和语法
 
 注释
@@ -246,4 +256,181 @@ if __name__ == '__main__':      主程序
 __name__ 指示模块应该如何被加载
   如果模块被导入的，__name__ 的值是模块名字
   如果模块是直接执行，__name__的值是’__main__‘
+
+.运算符
+  属性：数据
+     返回一个数据。显示则要使用print语句
+  方法：操作（）
+      调用，执行一段代码
+
+简单赋值是不可调用对象
+函数，类，方法是可调用对象
+
+可调用对象判断 callable()
+
+字串：'',"",''' ''',""" """
+列表 []
+元组 (,)
+以上都是序列，有序列的公共方法
+列表有很多独有方法
+
+字典{}
+ 字典有很多单独方法
+数值：
+
+如何获取使用帮助
+  获取对象支持使用的属性和方法，dir(list)
+  查看某方法的具体使用帮助 help(list.pop)
+  获取可调用对象的文档字串 print boj.__doc__
+
+集合：集合是一组无序排列的可哈希的值
+  支持集合关系测试 
+     交集，并集。。
+  支持成员关系测试 
+     in
+     not in
+     迭代
+  不支持：索引，元素获取，切片
+集合类型：
+  set() 可变
+  frozenset() 不可变，冻结集合
+集合没有特定语法格式，只能通过工厂函数创建，即set(),frozenset()
+
+方法：
+ len(s) 返回s中项目数
+ s.copy() 制作s的一份副本
+ s.difference(t)  求差集，返回所有在s中，但不在t中的项目
+ s.intersection(t) 求交集，返回所有同事在s和t中的项目
+ s.isdisjoint(t)  如果s和t没有相同项，则返回True
+ s.issubset(t)  如果s是t的一个子集，则返回ture
+ s.isuperset(t)  如果s是t的一个超级，则返回ture
+ s.symmetric_difference(t) 求对称差集，返回所有在s或t中，但又不同时在这两个集合中的项
+ s.union(t) 求并集，返回所有在s或t中的项
+集合操作：
+s | t  s和t的并集
+s & t  交集
+s - t  差集
+s ^ t  对称差集
+len(s)
+max(s)
+min(s)
+
+容器、类型、对象
+1、字典，列表，元组等可以跨行定义内容，最后一个元素可以多加一个,
+2、所有对象都有引用计数，使用del()执行删除操作，或者某次操作超出作用域，计数会减少
+3、列表和字典都支持两种类型的复制操作，浅复制和深复制，深复制可使用copy模块中的deepcopy（）实现
+4、python中的所有对象都是“第一类”，这意味着使用标识符命名的所有对象都具有相同状态，于是，能够命名的所有对象都可以直接当数据进行处理
+5、所有序列都支持迭代
+6、所有序列都支持的操作和方法
+  s[i]
+  s[i:j]
+  s[i:j:stride]
+  len(s)
+  min(s)
+  max(s)
+  sum(s)
+  all(s)
+  any(s)
+  s1 + s2 连接
+  s *N s2 重复
+  obj in s1 
+  obj not in s1
+7、可变序列的操作
+  s1[index] = value  元素赋值
+  s1[i:j] = t 切片赋值
+  del s1[i:j]
+  del s1[i:j:stride]
+
+python表达式和语句
+ python中常用的表达式操作符
+   x + y,x - y
+   x * y,x / y,x // y,x % y
+  逻辑运算
+   x or y ,x and y,not x
+  成员关系
+   x in y, x not in y
+  对象实例测试
+   x is y, x not is y
+  比较运算
+   x < y, x > y, x <= y, x == y, x != y
+  数值位运算
+   x | y, x & y, x ^ y ,x << y ,x >> y
+  
+  -x,+x,~x
+
+  幂运算
+    x ** y
+  索引和分片
+    x[i],x[i:j],x[i:j:stride]
+  调用
+   x(...)
+  取属性
+   .
+  定义元组
+     （...）
+  定义序列
+      [...]
+  定义字典
+      {...}
+  三元选择表达式
+    x if y else z
+  匿名函数
+    lambda args: expression
+  生成器函数发送协议：yield x
+
+运算优先级
+  (...),[...],{...}
+  s[i],s[i:j]
+  .
+  s(...)
+  +x,-x,~x
+  x ** y
+  *,/,//,%
+  +,-
+  <<,>>
+  &
+  ^
+  |
+  <,<=,>,>=,==,!=
+  is,not is
+  in,not in
+  not
+  and
+  or
+  lambda
+
+语句
+  赋值语句
+  调用
+  print
+  if/elif/else 条件判断
+  for/else  序列迭代
+  while/else  普通循环
+  pass 占位符
+  break
+  continue
+  def
+  return
+  yield
+  global 命名空间
+  raise 触发异常
+  import
+  from 模块属性访问
+  class 类
+  try/except/finally 捕捉异常
+  del 删除引用
+  assert  调试检查
+  with/as  环境管理器
+
+赋值语句：
+  隐式赋值 import,from,def,class,for,函数参数
+
+  元组和列表 分解赋值：当赋值符号（=）的左侧为元组或列表时，python会按照位置把右边的对象和左边的目标自左而右逐一进行配对，个数不同时触发异常，此时可以切片的方式进行
+
+  多重目标赋值
+    num1 = num2 = num3 = 44
+
+  增强赋值
+    +=，-=，*=，/=,//=,%= 执行效率好
+
 
