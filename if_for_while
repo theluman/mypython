@@ -61,3 +61,46 @@ break 跳出最内层的循环
 continue 跳到所处的最近层的循环的开始处
 pass 占位语句
 else代码块  循环正常终止才会执行，如果是循环终止是由break跳出导致的，则else不会执行
+while true: 死循环
+
+for
+  for expression1 in iterable:
+    for_suite
+  else:
+    else_suite
+通常expression1或是一个单独的变量，或是一个变量序列，一般以元祖的形式给出
+如果以元组或列表用于expression,则其中的每个数据项都会拆分到表达式的项，列入
+  T = [(1,2),(3,4),(5,6),(7,8)]
+  for (a,b) in T:
+    print a,b
+
+for循环比while循环执行速度快
+python 提供了两个内置函数，用于在for循环中定制特殊的循环
+range或xrange
+  range 一次性的返回连续的整数列表，存放于内存中
+  xrange 一次产生一个数据元素，相较于range更节省内存空间
+  zip 返回并行的元素元组的列表，常用于在for循环中遍历整个序列
+列子
+非完备遍历，用于每隔一定的个数元素挑选一个元素
+S = 'How are you thest days?'
+range(0,len(S),2)
+for i in range(0,len(S),2): print S[i],
+
+修改列表
+L = [1,2,3,4,5,6]
+for i in range(len(L)): L[i] += 1
+
+并行遍历
+zip 取得一个或多个序列为参数，将给定序列中的并排的元素配成元组，返回这些元组的列表
+ 当参数长度不一致时吗，zip会以最短序列长度为准
+可在for循环中用于实现并行迭代
+列子
+L1 = [1,2,3,4,5,6,7]
+L2 = ['a','b','c','d','e','f','g']
+zip(L1,L2)
+
+zip也常用于动态构造字典
+keys = [1,2,3,4,5,6,7]
+values = ['Mon','Tus','Wed','Thu','Fri','Sat','Sun']
+D={}
+for (k,v) in zip(keys,values): D[k] = v
