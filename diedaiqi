@@ -1,3 +1,4 @@
+回顾：
 动态引用
   sys.getrefcount() 计数引用数量
 增加对象引用计数场景
@@ -12,5 +13,51 @@
   容器本身被销毁
 
 if
+  if boolean_expression:
+     ...
+  elif boolean_expression:
+     ...
 while
+  while boolean_expression:
+      while_suite
+      if boolean_expression2: continue
+      if boolean_expression3: break
+  else:
+      else_suite
 for
+  for expression in object:
+      for suite
+      if boolean_expression2: contine
+      if boolean_expression3: break
+   else:
+      else_suite
+
+迭代：重复做某事
+iterable(可迭代)对象
+  支持每次返回自己所包含的一个成员对象
+  对象实现了__iter__方法
+    序列类型：如list,str,tuple
+    非序列类型: 如dict,file
+    用户自定义的一些包含了__iter__()或__getitem__()方法的类
+迭代器（iterator）又称游标（cursor）,它是程序设计的软件设计模式，是一种可在容器物件（如列表等）上实现元素遍历的借口
+迭代器是一种特殊的数据结构，以对象形式存在
+ 简单理解：对于一个集体中的每一个元素，想要执行遍历，那么针对这个集体的迭代器定义了遍历集体中每一个元素的顺序或者方法
+迭代器不可重复
+
+iter() 内置函数，创建迭代器 ==  l1.__iter__()
+l1 = [1,2,3,4,5,]
+i1 = iter(l1)
+
+使用iter()可从任何序列对象中得到迭代器
+若要实现迭代器，需要在类中定义next()方法
+要使得迭代器指向下一个元素，则使用函数next()
+当没有元素时，则引发StopIteration异常
+
+for循环可用于任何可迭代对象
+  for循环开始时，会通过迭代协议传递给iter()内置函数，从而能够从可迭代对象中获得一个迭代器，返回的对象含有需要的next()方法
+
+列表解析：基于已有的列表，快速生成新列表的方式,是python迭代机制的一种应用，它常用于实现创建新的列表，因此要放到[]中
+语法
+[expression for iter_var in iterable]
+[expression for iter_var in iterable if cond_expr]
+

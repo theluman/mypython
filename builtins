@@ -187,7 +187,7 @@ d.keys() 返回键列表
 d.values() 返回值列表
 d.pop(x) 弹出键为x的元素
 d.popitem() 随机弹出键值映射
-d1.update(d2) 将一个字段合并到当前字典,如果有键重复，d2d对应键的值会覆盖d1
+d1.update(d2) 将一个字典合并到当前字典,如果有键重复，d2d对应键的值会覆盖d1
 d.viewitems() 返回所有项
 d.viewkeys() 返回键
 d.viewvalues() 返回值
