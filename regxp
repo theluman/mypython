@@ -1,0 +1,46 @@
+正则表达式
+python 通过使用re模块 来实现正则
+
+help('modules') 获得当前系统中有哪些模块可用
+help本身是交互式接口
+help() 直接回车能进入help的交互
+
+import re
+
+python正则
+ .  任意单个字符
+ [...] 指定范围
+ [^...] 指定范围外
+  ? 匹配此前的字符0次或1次
+ + 匹配此前的字符1次或多次
+ {m}
+ {m,n}
+ {0,n}
+ {m,}
+ ^
+ $
+ part1|part2  2者取其一
+ (...)  分组
+ \b 匹配单词边界
+ [0-9] == \d  匹配任意数字
+ [0-9a-zA-Z] == \w
+  \W  与\w相反的
+ \s  任意空白字符 [\n\t\f\v\r]
+ \S 与\s相反
+ \nn   后向引用
+
+ (*|+|?|{})?  使用非贪婪模式匹配
+
+re.match
+ match对象
+  url = 'www.baidu.com'
+  re.match('baidu',url) 返回match对象
+  re.match('a','abc')  返回match对象
+  match对象就是一次查询返回的此次查询所包含的n多结果信息
+  通过match. 属性来调用
+
+re.search(pattern,string,flags=0) pattern匹配string 当时只返回第一次匹配到的结果
+re.findall(pattern,string,flags=o) 返回全部匹配到的
+ 
+ 
+ 

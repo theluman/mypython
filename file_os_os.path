@@ -1,0 +1,128 @@
+文件对象及os、os.path和pickle模块
+ 文件是由OS管理等的具有名字的存储区域
+ 文件被看做是字节序列
+
+文件处理：
+python内置函数open()用于打开文件个创建文件对象
+  open(name[,mode[,bufsize]])
+open方法可以接收三个参数：文件名，模式和缓冲区参数
+  open函数返回的是一个文件对象
+  mode 指定文件的打开模式
+  bufsize 定义输出缓存
+    0 表示无输出缓存，禁用缓冲
+    1 表示使用缓冲，只缓冲一行数据
+    负数表示使用系统默认设置缓冲大小
+    2+，正数表示使用近似指定大小的缓冲，字节为单位
+
+打开模式
+ 简单模式：
+    r:只读
+      open('/var/log/message.log','r')
+    w:写入,从文件首部，文件指针处开始覆盖写入
+    a:附加，从文件末尾开始输入
+  在模式后使用”+“表示同时支持输入，输出操作
+    如r+,w+和a+
+  在模式后附加”b“ 表示以二进制方式打开
+    如rb,wb+
+
+file.close()
+file.next()
+  指针在行起始处，向下读一行，在行中间的话，读到本行末尾,next() 只是每次返回数据，不会移动指针
+file.fileno() 文件描述符，都是很小的整数，0，1，2都是系统内置的标准输入，标准输出，错误输出，所有从3开始
+file.readline([size]) 读取单行的最多size个字符，返回一个字符串，size省略读取并返回一行数据，包括行结束符
+file.readlines([size]) 读取并返回所有行，以列表形式，占用大量内存空间，不建议用,size可选，用于指定读取的最大近似字符数
+file.tell() 显示当前指针位置，返回当前指针在文件中的字节数位置
+file.seek(offset[,whence]) offset偏移量，单位是字节；whence偏移起点，0代表文件头部，1从当前位置，2表示从文件尾部开始偏移.不给whence默认是0
+  file.seek(0) 指针回到首部
+  file.seek(0,2) 偏移到文件尾部
+file.read([size]) 读取最多到少个字节，返回一个字串
+file.name() 调用当前文件名称
+file.write(string) 写入字符串
+file.writelines(sequence_of_strings) 写入字符序列，例如，如果是列表，列表内容必须为字串
+file.isatty() 如果file是一个交互式终端即终端设备文件，则返回1
+file.flush() 清除输出缓冲区，同步到磁盘文件中
+file.truncate([size]) 将文件截断为最多size个字节
+  file.truncate(file.tell()) 截取文件到当前指针
+
+属性
+file.closed
+file.name
+file.encoding
+file.mode
+file.newlines  返回读过的行结束符字串，没有为空
+file.softspace 默认是否为写入的行加入空格  0默认不加，1为加入空格
+
+文件系统处理，例如目录，管道，套接字等
+  使用os模块，跨系统兼容api
+import os
+
+目录相关：
+os.mkdir() 创建目录
+   makedirs() 创建多级目录，父目录不存在自动创建
+os.getcwd() 当前工作目录
+os.chdir() 切换目录    os.fchdir() 通过文件描述符改变目录
+   chroot() 设定当前进程的根目录
+   listdir() 列出指定目录下的所有文件名
+   rmdir() 删除目录
+   removedirs() 删除多级目录
+
+文件相关：
+os.mkfifo() 创建命名管道，即先进先出管道
+   mknod() 创建设备文件
+   remove() 删除文件
+   unlink() 删除链接文件
+   rename() 重命名文件
+   renames()
+   stat() 返回文件状态信息
+   symlink(src,lst) 创建链接文件
+   utime() 更新文件时间戳
+   tmpfile() 创建并打开（w+b）一个新的临时文件 
+   walk() 目录树生成器
+
+访问权限相关：
+os.access(path,mode) 检验某个用户是否有访问权限，mode给的uid或gid等数字
+   chmod(path,mode) 修改文件权限 mode 例如0640
+   chown(path,uid,gid) 修改属主数组
+   umask()  设置默认权限遮罩码
+
+文件描述符：
+os.open() 调用很底层的I/O打开方式
+   read() 底层的读
+   write() 底层的写
+
+设备文件
+  makedev(major,minor) 创建设备文件
+  major(dev) 获取设备的主设备号
+  minor(dev) 获取设备的次设备号
+  
+os.path模块 
+  文件路径相关功能
+  basename() 文件基名
+  dirname()  路径的目录名
+  join()   将多个路径整合成一个名字
+  split()  分割文件名，返回dirname()及basename() 结果组成的元组
+  splitext() 返回文件名，扩展名 (filename,extension) 元组
+  信息
+  getatime()
+  getctime()
+  getmtime()
+  getsize() 文件大小
+  查询
+  exists() 判断指定文件是否存在
+  isabs() 判断指定路径是否是绝对路径
+  isdir() 是否存在且为目录
+  isfile() 是否存在且为文件
+  islink() 是否存在且为链接文件
+  ismount() 是否为挂载点
+  samefile() 两个路径是否指向同一个文件
+
+字典如何保存到文件中（许多内存对象有流式化持久存储的需要）
+  对象的流式化工具，扁平化
+  实现对象持久存储
+    pickle 模块
+    marshal 模块
+    shelve 模块
+
+import pickle
+  pickle.dump(d1,filename) 流式保存
+  pickle.load(filename) 重新加载数据 

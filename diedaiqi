@@ -56,8 +56,23 @@ i1 = iter(l1)
 for循环可用于任何可迭代对象
   for循环开始时，会通过迭代协议传递给iter()内置函数，从而能够从可迭代对象中获得一个迭代器，返回的对象含有需要的next()方法
 
-列表解析：基于已有的列表，快速生成新列表的方式,是python迭代机制的一种应用，它常用于实现创建新的列表，因此要放到[]中
+列表解析：基于已有的列表，快速生成新列表的方式,是python迭代机制的一种应用，它常用于实现创建新的列表，因此要放到[]中,列表解析生成的是列表，一次性将数据全部生成，放在内存空间，等待调用
 语法
 [expression for iter_var in iterable]
 [expression for iter_var in iterable if cond_expr]
+[(i,j) for i in l1 for j in l2]
+
+生成器: 生成器表达式并不真正创建列表，而是返回一个生成器对象，此对象在每次计算出一个条目后，把这个条目产生（yield）出来,生成器表达式使用了“惰性计算”或乘坐“延迟求值“的机制，不消耗大量内存，序列过长，并且每次只需要获取一个元素时，应当考虑使用生成器表达式而不是列表解析
+(expression for iter_var in iterable)
+(expression for iter_var in iterable if cond_expr)
+((i,j) for i in l1 for j in l2)
+
+enumerate
+range可在非完备遍历中用于生成索引偏移量，而非偏移处的元素，如果同时需要偏移索引和偏移元素，则可以使用enumerate()函数，此内置函数返回一个生成器对象
+S = 'hello word'
+E = enumerate(S)
+E.next()
+(0,'h')
+E.next()
+(1,'e')
 
