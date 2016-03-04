@@ -184,4 +184,25 @@ g1 = genNum(20)
 for i in g1:
     print i
 
+装饰器：
+  1、装饰器本身是一个函数，用于装饰其他函数
+  2、功能：增强被装饰函数的功能
 
+装饰器一般接受一个函数对象作为函数，以对其进行增强
+
+def deco(func):
+    def wrapper():
+        print 'Plz say something: '
+        func()
+        print 'No zuo no die'
+    return wrapper
+
+@deco   #这是一个语句，后续需要定义其他函数，后面的函数将被当做参数传递给func
+def show():
+    print 'I am from Mars. '
+
+show()       #调用
+
+递归：
+运行过程中一层一层调用自身
+递归需要边界条件，递归前进段和递归返回段

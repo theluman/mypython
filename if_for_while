@@ -104,3 +104,21 @@ keys = [1,2,3,4,5,6,7]
 values = ['Mon','Tus','Wed','Thu','Fri','Sat','Sun']
 D={}
 for (k,v) in zip(keys,values): D[k] = v
+
+异常处理
+try-except
+
+try:
+    <.....>        # 可能出现异常的语句
+except <....>:     #锁定是哪种异常
+    <........>      #出现异常的处理方法
+
+例子：
+import sys
+try:
+    s = raw_input('Enter something:')   #可能遇到异常的语句
+except EOFError:                        #锁定哪种异常
+    print 'ERROR INPUT'                 #出现异常的处理方法
+    sys.exit()
+print s
+

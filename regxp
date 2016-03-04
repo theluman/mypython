@@ -44,12 +44,36 @@ re.match
     mm.re     要查找什么对象
       re模块对要匹配的模式会事先进行编译 re.compile(r'a'),r表示正则表达式的模式
     mm.group() 返回模式匹配到的结果，即查询结果
+      mm.group(0)
     mm.groups() 返回的所有查询结果
       mm.groups([1])
     mm.pos  搜索时的起始位置
     mm.endpos 搜索时的结束位置
-    mm.end
-    .....
-re.search(pattern,string,flags=0) pattern匹配string 当时只返回第一次匹配到的结果
-re.findall(pattern,string,flags=o) 返回全部匹配到的
- 
+    mm.end  匹配到的串在原串中的结束位置
+    mm.start 匹配到的串在原串中的开始位置
+
+re.compile(r'a') r代表后面的正则表达式，r特殊公用字符
+
+re.search(pattern,string,flags=0) pattern匹配string 当时只返回第一次匹配到的结果，返回一个match对象
+  match有很多属性和方法
+  属性
+    string
+    re
+    pos
+    endpos
+  方法
+    group()
+    strat()
+    end()
+re.findall(pattern,string,flags=o) 返回全部匹配到的 返回列表
+re.finditer(pattern,string,flags=0) 返回一个迭代器
+re.split() 把字符串以模式做分割符 做切分
+re.sub() 搜索并替换 返回字串
+re.subn() 搜索并替换并返回被替换的串和替换次数 返回元组
+re.compile() 编译模式
+ flags:
+   I或IGNORECASE 忽略字符大小写
+   M或MULTILINE  跨多行匹配
+   A或ASCII  仅执行8位ASCII码匹配
+   U或UNICODE 使用unicode 方式匹配
+
