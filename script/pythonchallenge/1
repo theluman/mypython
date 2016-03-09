@@ -1,0 +1,7 @@
+#!/usr/bin/env python
+# -*- coding:uft-8 -*-
+
+#符合字母规律的类
+class HINT:
+    
+-
