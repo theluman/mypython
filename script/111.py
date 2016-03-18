@@ -76,3 +76,4 @@ for i in range(3050,1650,-50):
         NR = NEIRONG('http://tieba.baidu.com/p/',i)
         NR.writeDate()
 print '小说已经准备好啦'
+    

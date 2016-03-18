@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 # -*- coding:uft-8 -*-
 
+l1 = [chr(i) for i in range(97,123)]
+
+
 #符合字母规律的类
 class HINT:
     
--
