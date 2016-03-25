@@ -8,9 +8,9 @@ import re
 class ZHANGJIE:
     #初始化传入地址
     def __init__(self,zjUrl,Num):
-        self.zjUrl = zjUrl    
-        self.Num = Num    
-    
+        self.zjUrl = zjUrl
+        self.Num = Num
+
     #传入页码，获得网页源代码，只看精品
     def getPage(self):
         url = self.zjUrl + str(self.Num)
@@ -39,7 +39,7 @@ class NEIRONG:
         request = urllib2.Request(url)
         response = urllib2.urlopen(request)
         return response.read()
-        
+
     #获取小说章节和标题
     def getTitle(self):
         webcon = self.getPage()
@@ -67,7 +67,7 @@ class NEIRONG:
                 f.write(con_t)
                 f.write(con_n)
         except IOError:
-            print '写入异常' 
+            print '写入异常'
 
 for i in range(3050,1650,-50):
     ZJ = ZHANGJIE('http://tieba.baidu.com/f/good?kw=%E9%98%B4%E9%98%B3%E4%BB%A3%E7%90%86%E4%BA%BA&ie=utf-8&cid=0&pn=',i)
@@ -76,4 +76,3 @@ for i in range(3050,1650,-50):
         NR = NEIRONG('http://tieba.baidu.com/p/',i)
         NR.writeDate()
 print '小说已经准备好啦'
-    
