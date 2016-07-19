@@ -1,0 +1,13 @@
+python 默认都是assic编码方式保存
+读取到内存统一用unicode方式处理
+
+u'abc你好'可以转换成unicode形式
+name = u'你好'
+    name.encode('utf-8')
+unicode转换成utf-8
+
+    name.decode('utf-8')
+ utf-8解码成unicode
+
+定义文件编码方式
+#-*- coding:utf-8 -*-

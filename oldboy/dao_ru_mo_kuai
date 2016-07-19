@@ -1,0 +1,4 @@
+import sys
+from sys import argv
+import multiprocessing as multi
+from sys import *  not suggested 不建议用这种方法，不知道模块数量，名字，容易与本地命名冲突
